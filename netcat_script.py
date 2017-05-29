@@ -109,13 +109,14 @@ def server_loop():
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((target,port))
-
+    print "test"
     server.listen(5)
 
     while True:
         client_socket, addr = server.accept()
+
         # start thread to handle client
-        client_thread = threading.Thread(target=client_handler, args=(client_socket,))
+        client_thread = threading.Thread(target=client_handler, args=(client_socket))
         client_thread.start()
 
 def run_command(command):
